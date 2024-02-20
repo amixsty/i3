@@ -1,0 +1,8 @@
+#Show Bitcoin price in i3status-rust
+[[block]]
+block = "custom"
+command = "curl -s https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing | jq '.data.cryptoCurrencyList[0].quotes[0].price' | cut -d '.' -f 1 | cut -c1-2,3- | sed 's/./&./2' |  sed 's/^/₿ /' "
+interval = 1000
+[block.theme_overrides]
+idle_bg = "#ff793f"
+idle_fg = "#000000"
